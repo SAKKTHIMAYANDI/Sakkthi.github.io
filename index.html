@@ -1,315 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Sakkthi Resume</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sakkthi V A — Portfolio</title>
+  <meta name="description" content="Portfolio of Sakkthi V A — Full Stack Developer, Odoo Developer, Backend Engineer" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+  <style>
+    :root{
+      --bg:#0b0b0d; --card:#111216; --muted:#9ca3af; --accent1:#7c3aed; --accent2:#c084fc; --glass:rgba(255,255,255,0.04);
+      --radius:14px; --glass-border:rgba(255,255,255,0.05);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+    html,body{height:100%;background:linear-gradient(180deg,#05050a 0%,var(--bg) 100%);color:#e6e6ee}
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    /* ---------- layout ---------- */
+    .container{max-width:1150px;margin:0 auto;padding:28px}
+    nav{position:fixed;left:0;right:0;top:14px;z-index:1200;display:flex;justify-content:center}
+    .nav-inner{width:100%;max-width:1150px;background:transparent;display:flex;align-items:center;justify-content:space-between;padding:10px 14px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .mark{width:44px;height:44px;background:linear-gradient(135deg,var(--accent1),var(--accent2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    .logo h3{font-size:18px}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;transition:all .18s}
+    .nav-links a:hover{color:white;background:var(--glass)}
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    /* ---------- hero ---------- */
+    header{min-height:86vh;display:flex;align-items:center}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
+    .hero-left h1{font-size:48px;line-height:1.02;margin-bottom:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent}
+    .headline{font-size:20px;color:var(--muted);margin-bottom:20px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:600;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff}
+    .btn-ghost{background:transparent;border:1px solid var(--glass);color:var(--muted)}
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    /* hero card */
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:18px;padding:20px;border:1px solid var(--glass);backdrop-filter:blur(6px)}
+    .profile{display:flex;gap:16px;align-items:center}
+    .photo{width:88px;height:88px;border-radius:14px;background:linear-gradient(135deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;font-weight:700}
+    .meta h4{margin-bottom:6px}
+    .meta p{color:var(--muted);font-size:14px}
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    /* animated background bubbles */
+    .bg-bubbles{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bubble{position:absolute;border-radius:50%;opacity:0.06;filter:blur(36px)}
+
+    /* ---------- sections ---------- */
+    section{padding:60px 0;position:relative;z-index:20}
+    .section-title{text-align:center;font-size:34px;margin-bottom:36px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent}
+
+    /* skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
+    .skill{background:var(--card);padding:18px;border-radius:12px;border:1px solid var(--glass);text-align:center;font-weight:600}
+
+    /* projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+    .project{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;border:1px solid var(--glass);transition:all .25s}
+    .project:hover{transform:translateY(-10px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .project h3{margin-bottom:8px;color:var(--accent2)}
+    .project p{color:var(--muted);font-size:14px}
+    .project .links{margin-top:12px;display:flex;gap:8px}
+
+    /* experience */
+    .exp-list{display:grid;gap:14px}
+    .exp{background:var(--card);padding:18px;border-radius:12px;border:1px solid var(--glass)}
+    .exp h4{color:var(--accent1)}
+    .exp p{color:var(--muted);font-size:14px}
+
+    /* contact */
+    .contact-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:12px;border:1px solid var(--glass);text-align:center}
+    .contact-card p{margin-bottom:10px;color:var(--muted)}
+
+    /* footer */
+    footer{padding:30px 0;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-card{order:2}
+      .hero-left{text-align:center}
+      .logo h3{display:none}
+    }
+    @media (max-width:520px){.nav-links{display:none}.hero-left h1{font-size:34px}}
+
+    /* small animations */
+    .fade-in{opacity:0;transform:translateY(10px);animation:fadeIn .7s forwards}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+  </style>
 </head>
+<body>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+  <!-- decorative bubbles -->
+  <div class="bg-bubbles" aria-hidden="true">
+    <div class="bubble" style="width:420px;height:420px;left:-60px;top:8%;background:linear-gradient(135deg,var(--accent1),var(--accent2));opacity:0.08"></div>
+    <div class="bubble" style="width:300px;height:300px;right:-40px;bottom:6%;background:linear-gradient(135deg,var(--accent2),#60a5fa);opacity:0.06"></div>
+    <div class="bubble" style="width:180px;height:180px;left:20%;bottom:20%;background:linear-gradient(135deg,#06b6d4,var(--accent1));opacity:0.04"></div>
+  </div>
+
+  <nav>
+    <div class="nav-inner container">
+      <div class="logo">
+        <div class="mark">SV</div>
+        <h3>Sakkthi V A</h3>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-    <!-- Spinner End -->
+  </nav>
 
+  <header class="container">
+    <div class="hero">
+      <div class="hero-left">
+        <h1 class="fade-in">Hi — I'm Sakkthi, a Full Stack Developer</h1>
+        <p class="headline fade-in">I build high-performance web applications, custom Odoo solutions, and data-driven dashboards. I focus on clean architecture, delightful UI, and delivering measurable business value.</p>
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand d-block d-lg-none">
-            <h1 class="text-primary fw-bold m-0">Sakkthi V A</h1>
-        </a>
-        <!-- <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button> -->
-        <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-                <!-- <a href="#home" class="nav-item nav-link active">Home</a> -->
-                <!-- <a href="#about" class="nav-item nav-link">About</a> -->
-                <!-- <a href="#skill" class="nav-item nav-link">Skills</a> -->
-                <!-- <a href="#service" class="nav-item nav-link">Services</a> -->
-            </div>
-            <a href="index.html" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
-                <h1 class="text-primary fw-bold m-0">Sakkthi V A</h1>
-            </a>
-            <div class="navbar-nav me-auto py-0">
-                <!-- <a href="#project" class="nav-item nav-link">Projects</a> -->
-                <!-- <a href="#team" class="nav-item nav-link">Team</a> -->
-                <!-- <a href="#testimonial" class="nav-item nav-link">Testimonial</a> -->
-                <!-- <a href="#contact" class="nav-item nav-link">Contact</a> -->
-            </div>
+        <div class="cta fade-in">
+          <a class="btn btn-primary" href="https://sakkthimayandi.github.io/Sakkthi.github.io/" target="_blank">View Portfolio</a>
+          <a class="btn btn-ghost" href="https://github.com/SAKKTHIMAYANDI" target="_blank">View Code</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/sakkthi3/" target="_blank">Connect</a>
+          <a class="btn btn-ghost" href="mailto:sakkthimayandi@gmail.com">Email</a>
         </div>
-    </nav>
-    <!-- Navbar End -->
 
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+          <div style="background:var(--card);padding:12px;border-radius:12px;border:1px solid var(--glass);min-width:160px;text-align:center">
+            <div style="font-weight:700">Odoo • Django • FastAPI</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Building enterprise apps & APIs</div>
+          </div>
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-light my-6 mt-0" id="home">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 py-6 pb-0 pt-lg-0">
-                    <h3 class="text-primary mb-3">I'm</h3>
-                    <h1 class="display-3 mb-3">Sakkthi V A</h1>
-                    <h2 class="typed-text-output d-inline"></h2>
-                    <div class="typed-text d-none">Web Developer, Front End Developer, Back End Developer,Software Developer,Data Analyst</div>
-                    <div class="d-flex align-items-center pt-5">
-                        <a href="css/SakkthiVA(Resume).pdf" target="_blank" class="btn btn-primary py-3 px-4 me-5" download>View CV</a>
-                        <a class="btn btn-primary py-3 px-5" href="tel:+91 98427 28175">Contact Us</a>
-                        <!-- <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                        <h5 class="ms-4 mb-0 d-none d-sm-block">Play Video</h5> -->
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img class="img-fluid" src="img/profile.png" alt="">
-                </div>
-            </div>
+          <div style="background:var(--card);padding:12px;border-radius:12px;border:1px solid var(--glass);min-width:160px;text-align:center">
+            <div style="font-weight:700">Data & BI</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Power BI • Tableau • SQL</div>
+          </div>
         </div>
+      </div>
+
+      <aside class="hero-card fade-in">
+        <div class="profile">
+          <div class="photo">SV</div>
+          <div class="meta">
+            <h4>Sakkthi V A</h4>
+            <p>Full Stack Developer • Odoo Specialist</p>
+            <p style="margin-top:8px;color:var(--muted);font-size:13px">Salem, TamilNadu • sakkthimayandi@gmail.com</p>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="/SakkthiVA(Resume).pdf" download>Download Resume</a>
+          <a class="btn btn-ghost" href="https://skill-lync.com/student-projects/project-1-covid-19-vaccinations-trend-analysis-344" target="_blank">View Project</a>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:.9"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="#c7b8ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>Open to: Full Stack / Odoo / Backend roles</span>
+        </div>
+      </aside>
     </div>
-    <!-- Header End -->
+  </header>
 
+  <main>
+    <section id="about" class="container">
+      <h2 class="section-title">About Me</h2>
+      <p style="max-width:920px;margin:0 auto;color:var(--muted);line-height:1.8;text-align:center">
+        I am a Full Stack Developer with experience in Django, FastAPI, and Odoo (v15–v18). I enjoy designing and building
+        performant backend systems, crafting smooth front-end experiences with modern JS, and turning data into actionable insights.
+        I’ve worked on e-commerce platforms, ERP customizations, and data analytics projects—always focusing on product quality and
+        user delight.
+      </p>
+    </section>
 
-    <!-- Expertise Start -->
-    <div class="container-xxl py-6 pb-5" id="skill">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="display-5 mb-5">Skills & Experience</h1>
-                    <p class="mb-4">
-                        <ul>
-                            <li>
-                                As a Junior Full Stack Developer, my responsibilities include front-end and back-end development, with a focus on creating seamless user interfaces and robust server-side functionalities.<br>
-                            </li>
-                            <li>
-                                I manage database systems to ensure efficient data storage and retrieval, and utilize version control to maintain code integrity and collaboration.<br>
-                            </li>
-                            <li>
-                                My role encompasses a comprehensive approach to both client-side and server-side development, contributing to well-rounded software solutions.<br>
-                            </li>
-                            <li>
-                                With this I am skilled in data collection and cleaning, gathering and preparing data from diverse sources to ensure its accuracy and completeness.<br>
-                            </li>
-                            <li>
-                                I apply statistical techniques and tools to analyze data, uncovering trends, patterns, and insights. I create and present reports, dashboards, and visualizations to effectively communicate findings to stakeholders.<br>
-                            </li>
-                            <li>
-                                Additionally, I collaborate with teams to understand their data needs and provide actionable insights to support data-driven decision-making.<br>
-                            </li>
-                        </ul>
-                    </p>
-                    <h3 class="mb-4">My Skills</h3>
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">HTML</h6>
-                                    <h6 class="font-weight-bold">80%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">CSS</h6>
-                                    <h6 class="font-weight-bold">70%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">Javascript & jQuery</h6>
-                                    <h6 class="font-weight-bold">75%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-                                </div>
-                                
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">MySQL & PostgreSql</h6>
-                                    <h6 class="font-weight-bold">75%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">Git & GitHub</h6>
-                                    <h6 class="font-weight-bold">75%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">Python</h6>
-                                    <h6 class="font-weight-bold">70%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">Django</h6>
-                                    <h6 class="font-weight-bold">80%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">Odoo</h6>
-                                    <h6 class="font-weight-bold">70%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="skill mb-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-bold">API Development & Integration</h6>
-                                    <h6 class="font-weight-bold">75%</h6>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
-                        <li class="nav-item w-50">
-                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
-                        </li>
-                        <li class="nav-item w-50">
-                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row gy-5 gx-4">
-                                <div class="col-sm-6">
-                                    <h5>Junior Data Analyst</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">Feb 2023 - Sep 2023</p>
-                                    <h6 class="mb-0">Skill Lync</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h5>Junior Full Stack Developer</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">Oct 2023 - Jan 2025</p>
-                                    <h6 class="mb-0">STP Web Hosting</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h5>Junior Full Stack Developer</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">Feb 2025 - Apr 2025</p>
-                                    <h6 class="mb-0">4x Engineer</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h5>Senior Full Stack Developer</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">Apr 2025 - Present</p>
-                                    <h6 class="mb-0">JVL Technologies</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row gy-5 gx-4">
-                                <div class="col-sm-6">
-                                    <h5>MCA</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">2021 - 2023</p>
-                                    <h5 class="mb-0">K.S.R college OF Engineering </h5>
-                                    <h6 class="mb-0">Anna University</h6>
-                                </div>
-                                <!-- <div class="col-sm-6">
-                                    <h5>IOS Development</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">2000 - 2045</p>
-                                    <h6 class="mb-0">Cambridge University</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h5>Web Design</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">2000 - 2045</p>
-                                    <h6 class="mb-0">Cambridge University</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h5>Apps Design</h5>
-                                    <hr class="text-primary my-2">
-                                    <p class="text-primary mb-1">2000 - 2045</p>
-                                    <h6 class="mb-0">Cambridge University</h6>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="skills" class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">Python</div>
+        <div class="skill">Django</div>
+        <div class="skill">FastAPI</div>
+        <div class="skill">Odoo (v15 - v18)</div>
+        <div class="skill">Owl JS / JavaScript</div>
+        <div class="skill">HTML / CSS / XML</div>
+        <div class="skill">PostgreSQL / MySQL</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Power BI / Tableau</div>
+        <div class="skill">REST APIs • JWT Auth</div>
+      </div>
+    </section>
+
+    <section id="projects" class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project">
+          <h3>COVID-19 Vaccination Trend Analysis</h3>
+          <p>Data analysis and visualization exploring global vaccination patterns and trends using Python and BI tools.</p>
+          <div class="links">
+            <a class="btn btn-ghost" href="https://skill-lync.com/student-projects/project-1-covid-19-vaccinations-trend-analysis-344" target="_blank">View</a>
+            <a class="btn btn-ghost" href="https://github.com/SAKKTHIMAYANDI/amazon_bag_analysis" target="_blank">Code</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <h3>Amazon Bag Analysis</h3>
+          <p>Sales data analysis to extract product performance insights; built reports & dashboards for visualization.</p>
+          <div class="links">
+            <a class="btn btn-ghost" href="https://github.com/SAKKTHIMAYANDI/amazon_bag_analysis" target="_blank">View</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <h3>Modern Portfolio Website</h3>
+          <p>Personal portfolio built with modern UI/UX patterns and animations to showcase projects and skills.</p>
+          <div class="links">
+            <a class="btn btn-ghost" href="https://sakkthimayandi.github.io/Sakkthi.github.io/" target="_blank">Open</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="experience" class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-list">
+
+        <div class="exp">
+          <h4>Global Edge Software — Odoo Technical Developer & Support (Aug 2025 – Present)</h4>
+          <p>Providing Odoo technical development, module customization, debugging, and supporting clients with end‑to‑end ERP solutions and integrations.</p>
         </div>
-    </div>
-    <!-- Expertise End -->
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <div class="exp">
+          <h4>SkyRich Technology — Odoo Developer (Jul 2025 – Aug 2025)</h4>
+          <p>Customization of Odoo modules, workflow optimization, bug fixing, and supporting client implementations.</p>
+        </div>
 
+        <div class="exp">
+          <h4>Think23 — Odoo Developer & Support (Freelancer) (Jul 2025 – Oct 2025)</h4>
+          <p>Worked on Odoo support tickets, module debugging, client customizations, and new feature implementation.</p>
+        </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <div class="exp">
+          <h4>JVL Technologies — Full Stack Developer (Feb 2025 – Jul 2025)</h4>
+          <p>Handled Odoo 18 customizations, Owl JS UI components, advanced integrations, and improving e-commerce workflows.</p>
+        </div>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+        <div class="exp">
+          <h4>4x Engineer — Junior Full Stack Developer (Feb 2025 – Apr 2025)</h4>
+          <p>Built FastAPI backends, implemented JWT authentication, and contributed to scalable database structures.</p>
+        </div>
+
+        <div class="exp">
+          <h4>STP Web Hosting — Junior Full Stack Developer (Oct 2023 – Jan 2025)</h4>
+          <p>Django admin customization, e-commerce module development, Odoo v15 enhancements, and database optimization.</p>
+        </div>
+
+        <div class="exp">
+          <h4>Skill Lync — Junior Data Analyst (Feb 2023 – Sep 2023)</h4>
+          <p>Data cleaning, analytics, dashboard building, and reporting using Python, SQL, Power BI, and Tableau.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-card">
+        <p>I'm open to roles in Full Stack Development, Odoo customization, Backend Engineering, and Data Engineering.</p>
+        <p style="font-weight:700">Email: <a href="mailto:sakkthimayandi@gmail.com" style="color:var(--accent2);text-decoration:none">sakkthimayandi@gmail.com</a></p>
+        <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/sakkthi3/" target="_blank">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/SAKKTHIMAYANDI" target="_blank">GitHub</a>
+          <a class="btn btn-ghost" href="https://sakkthimayandi.github.io/Sakkthi.github.io/" target="_blank">Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 Sakkthi V A — Built with care • Designed for impact</div>
+  </footer>
+
+  <script>
+    // simple smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+
+    // lazy fade-in
+    window.addEventListener('load',()=>{
+      document.querySelectorAll('.fade-in').forEach((el,i)=>{el.style.animationDelay = (i*120)+'ms'})
+    })
+  </script>
 </body>
-
 </html>
